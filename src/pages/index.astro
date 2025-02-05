@@ -1,0 +1,73 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import Navbar from '../components/Navbar.astro';
+import Baner from '../components/Baner.astro';
+import About from '../components/About.astro';
+import Footer from '../components/Footer.astro';
+import Form from '../components/Form.astro';
+import Aboutservice from '../components/Aboutservice.astro';
+import Aboutservice2 from '../components/Aboutservice2.astro';
+---
+
+<Layout>
+  <Navbar className="custom-class" />
+  <Baner />
+  
+  <section class="container mx-auto px-4 py-8 flex flex-col justify-center items-center">
+    <h1 class="text-3xl font-bold text-primary mb-8">Nossos Serviços</h1>
+
+    <!-- Container com rolagem horizontal -->
+    <div class="overflow-x-auto w-full scroll-smooth">
+      <!-- Cards dentro de um flexbox para exibição em linha -->
+      <div class="inline-flex space-x-4 lg:space-x-8 p-4">
+        <!-- Card de Automação de Atendimento e Suporte ao Cliente -->
+        <div class="inline-block w-[280px] min-w-[280px] flex-shrink-0 bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="/public/assets/postaatendimento.png" alt="Automação de Atendimento" />
+          <div class="p-4">
+            <h2 class="text-xl font-bold text-blue-900">Atendimento Automatizado</h2>
+            <p class="text-gray-700 mt-2">
+              Agilize seu suporte ao cliente com chatbots e respostas automáticas, garantindo eficiência e disponibilidade 24/7.
+            </p>
+            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Saiba mais
+            </button>
+          </div>
+        </div>
+
+        <!-- Card de Automação de Agendamento por IA -->
+        <div class="inline-block w-[280px] min-w-[280px] flex-shrink-0 bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="/public/assets/postagendamento.png" alt="Automação de Agendamento" />
+          <div class="p-4">
+            <h2 class="text-xl font-bold text-blue-900">Agendamento Inteligente</h2>
+            <p class="text-gray-700 mt-2">
+              Nossa IA gerencia sua agenda automaticamente, otimizando horários e reduzindo faltas para maximizar a produtividade.
+            </p>
+            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Saiba mais
+            </button>
+          </div>
+        </div>
+
+        <!-- Card de Vendas e Processos Internos -->
+        <div class="inline-block w-[280px] min-w-[280px] flex-shrink-0 bg-white shadow-lg rounded-lg overflow-hidden">
+          <img class="w-full h-48 object-cover" src="/public/assets/postatomacaoprocesso.png" alt="Vendas e Processos Internos" />
+          <div class="p-4">
+            <h2 class="text-xl font-bold text-blue-900">Automação de Processos</h2>
+            <p class="text-gray-700 mt-2">
+              Transforme a gestão da sua empresa com fluxos automatizados, reduzindo tarefas manuais e otimizando vendas e operações.
+            </p>
+            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+              Saiba mais
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Aboutservice />
+  <Aboutservice2 />
+  <About />
+  <Form />
+  <Footer />
+</Layout>

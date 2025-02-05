@@ -1,0 +1,45 @@
+---
+const { className } = Astro.props;
+// let isOpen = $state(false);
+// function toggleMenu() {
+//   isOpen = !isOpen;
+// }
+---
+
+<header class={`bg-blue-900 shadow-md ${className}`}>
+  <nav class="container mx-auto flex items-center justify-between p-1 h-24">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <img src="/assets/Diastech.png" alt="Diastech Logo" class=" mb-5 mt-5 h-20 w-20 rounded-full object-cover">
+    </div>
+
+    <!-- Links de navegação (desktop) -->
+    <ul class="hidden md:flex space-x-6">
+      <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
+      <li><a href="/about" class="text-white hover:text-gray-300">About</a></li>
+      <li><a href="/services" class="text-white hover:text-gray-300">Services</a></li>
+      <li><a href="/contact" class="text-white hover:text-gray-300">Contact</a></li>
+    </ul>
+
+    <!-- Botão para mobile -->
+    <div class="md:hidden">
+      <button class="text-white" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- {isOpen && (
+    <div class="md:hidden bg-blue-800 p-4">
+      <ul class="space-y-4">
+        <li><a href="/" class="text-white block py-2 px-4 hover:bg-blue-700 rounded">Home</a></li>
+        <li><a href="/about" class="text-white block py-2 px-4 hover:bg-blue-700 rounded">About</a></li>
+        <li><a href="/services" class="text-white block py-2 px-4 hover:bg-blue-700 rounded">Services</a></li>
+        <li><a href="/contact" class="text-white block py-2 px-4 hover:bg-blue-700 rounded">Contact</a></li>
+      </ul>
+    </div>
+  )} -->
+</header>
