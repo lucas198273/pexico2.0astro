@@ -1,14 +1,30 @@
 ---
-// src/components/Modal.astro
+/* src/components/Modal.astro */
 ---
 <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity opacity-0 pointer-events-none">
-    <div class="relative bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
-        <button id="closeModalButton" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
-            &times;
-        </button>
-        <h2 class="text-xl font-bold text-blue-900">Descrição do Serviço</h2>
-        <p class="text-gray-700 mt-2">
-          Aqui vai a descrição detalhada do serviço que você deseja apresentar.
+    <div class="relative bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl md:flex">
+      <!-- Botão de fechar -->
+      <button id="closeModalButton" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl">
+        &times;
+      </button>
+  
+      <!-- Área da imagem (para telas médias ou maiores) -->
+      <div class="md:w-1/3 flex justify-center items-center">
+        <img id="modalImage" src="" alt="Imagem de descrição do serviço" class="rounded-lg shadow-lg w-24 md:w-32 lg:w-40" />
+      </div>
+  
+      <!-- Área de conteúdo -->
+      <div class="mt-4 md:mt-0 md:w-2/3 md:pl-6">
+        <h2 id="modalTitle" class="text-xl font-bold text-blue-900">Descrição do Serviço</h2>
+        <p id="modalDescription" class="text-gray-700 mt-2">
+          Aqui vai a descrição detalhada do serviço.
         </p>
+        <div id="modalPrice" class="text-gray-800 font-semibold mt-4"></div>
+        <ul id="modalFunctionalities" class="list-disc list-inside text-gray-700 mt-2"></ul>
+        <button id="closeModalButtonAlt" class="bg-gradient-to-r from-black to-[#1e1cc4] text-white p-4 mt-4 rounded-lg shadow-lg w-full md:w-auto">
+          Fechar
+        </button>
+      </div>
     </div>
-</div>
+  </div>
+  
