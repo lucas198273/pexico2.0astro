@@ -8,7 +8,7 @@ export const servicesData = {
         "Respostas automáticas",
         "Disponibilidade 24/7"
       ],
-      image: "/public/assets/postaatendimento.png"
+      image: "/assets/postaatendimento.png"
     },
     agendamento: {
       title: "Agendamento Inteligente",
@@ -19,7 +19,7 @@ export const servicesData = {
         "Otimização de horários",
         "Notificações inteligentes"
       ],
-      image: "/public/assets/postagendamento.png"
+      image: "/assets/postagendamento.png"
     },
     automacao: {
       title: "Automação de Processos",
@@ -30,7 +30,7 @@ export const servicesData = {
         "Integração de sistemas",
         "Redução de custos operacionais"
       ],
-      image: "/public/assets/postatomacaoprocesso.png"
+      image: "/assets/postatomacaoprocesso.png"
     },
   };
   
