@@ -8,15 +8,23 @@ import Footer from '../components/Footer.astro';
 import Form from '../components/Form.astro';
 import Aboutservice from '../components/Aboutservice.astro';
 import Aboutservice2 from '../components/Aboutservice2.astro';
+import Modal from '../components/Modal.astro';
+
+let isModalOpen = false;
+
+const openModal = () => {
+  isModalOpen = true;
+};
+
+const closeModal = () => {
+  isModalOpen = false;
+};
 ---
 
 <Layout>
   <Navbar className="custom-class" />
-
   <Baner />
-  
 
-  
   <section class="container mx-auto px-4 py-8 flex flex-col justify-center items-center">
     <h1 class="text-3xl font-bold text-primary mb-8">Nossos Serviços</h1>
 
@@ -24,7 +32,7 @@ import Aboutservice2 from '../components/Aboutservice2.astro';
     <div class="overflow-x-auto w-full scroll-smooth">
       <!-- Cards dentro de um flexbox para exibição em linha -->
       <div class="inline-flex space-x-4 lg:space-x-8 p-4">
-        <!-- Card de Automação de Atendimento e Suporte ao Cliente -->
+        <!-- Card de Automação de Atendimento -->
         <div class="inline-block w-[280px] min-w-[280px] flex-shrink-0 bg-white shadow-lg rounded-lg overflow-hidden">
           <img class="w-full h-48 object-cover" src="/assets/postaatendimento.png" alt="Automação de Atendimento" />
           <div class="p-4">
@@ -32,7 +40,7 @@ import Aboutservice2 from '../components/Aboutservice2.astro';
             <p class="text-gray-700 mt-2">
               Agilize seu suporte ao cliente com chatbots e respostas automáticas, garantindo eficiência e disponibilidade 24/7.
             </p>
-            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            <button  class="openModalButton mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
               Saiba mais
             </button>
           </div>
@@ -46,7 +54,7 @@ import Aboutservice2 from '../components/Aboutservice2.astro';
             <p class="text-gray-700 mt-2">
               Nossa IA gerencia sua agenda automaticamente, otimizando horários e reduzindo faltas para maximizar a produtividade.
             </p>
-            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            <button class="openModalButton mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
               Saiba mais
             </button>
           </div>
@@ -60,7 +68,7 @@ import Aboutservice2 from '../components/Aboutservice2.astro';
             <p class="text-gray-700 mt-2">
               Transforme a gestão da sua empresa com fluxos automatizados, reduzindo tarefas manuais e otimizando vendas e operações.
             </p>
-            <button class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+            <button class=" openModalButton mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
               Saiba mais
             </button>
           </div>
@@ -68,30 +76,34 @@ import Aboutservice2 from '../components/Aboutservice2.astro';
       </div>
     </div>
   </section>
+
   <Aboutservice />
   <div class="w-full h-full bg-black flex flex-col md:flex-row justify-between items-center p-4 md:p-8">
     <!-- Imagem -->
     <div class="w-full md:w-1/2 mb-6 md:mb-0">
-        <img src="/assets/postdetalhes.png" alt="img-detalhes" class="w-full h-auto rounded-lg shadow-lg">
+      <img src="/assets/postdetalhes.png" alt="img-detalhes" class="w-full h-auto rounded-lg shadow-lg">
     </div>
 
     <!-- Texto e Botão -->
     <div class="w-full md:w-1/2 md:pl-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center md:text-left">
-            
-        </h2>
-        <p class="text-white text-base md:text-lg mb-6 text-center md:text-left">
-            Descubra como nosso robô de automação pode revolucionar sua produtividade e eficiência. Com tecnologia de ponta, ele é a solução perfeita para otimizar seus processos e reduzir custos.
-        </p>
-        <div class="text-center md:text-left">
-            <a href="#comprar" class="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300">
-                Saiba Mais
-            </a>
-        </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center md:text-left">
+        Automação Inteligente para seu Negócio
+      </h2>
+      <p class="text-white text-base md:text-lg mb-6 text-center md:text-left">
+        Descubra como nosso robô de automação pode revolucionar sua produtividade e eficiência. Com tecnologia de ponta, ele é a solução perfeita para otimizar seus processos e reduzir custos.
+      </p>
+      <div class="text-center md:text-left">
+        <button id="openModalButton" class="mt-4 bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+          Saiba mais
+        </button>
+      </div>
     </div>
-</div>
+  </div>
+ 
   <Aboutservice2 />
   <About />
   <Form />
+  <Modal />
   <Footer />
+  <script type="module" src="/src/scripts/script.js"></script>
 </Layout>

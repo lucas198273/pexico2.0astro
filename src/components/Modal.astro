@@ -1,0 +1,14 @@
+---
+// src/components/Modal.astro
+---
+<div id="modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity opacity-0 pointer-events-none">
+    <div class="relative bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+        <button id="closeModalButton" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">
+            &times;
+        </button>
+        <h2 class="text-xl font-bold text-blue-900">Descrição do Serviço</h2>
+        <p class="text-gray-700 mt-2">
+          Aqui vai a descrição detalhada do serviço que você deseja apresentar.
+        </p>
+    </div>
+</div>
