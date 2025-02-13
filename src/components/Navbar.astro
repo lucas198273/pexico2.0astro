@@ -1,12 +1,12 @@
----
+--- 
 const { className } = Astro.props;
----
-<header class={`bg-gradient-to-r from-black to-[#1e1cc4] shadow-lg ${className}`}>
-  <nav class="container mx-auto flex items-center justify-between p-4 h-16">
+--- 
+
+<header class={`relative w-full ${className} bg-black`}>
+  <!-- Barra de navegação -->
+  <nav class="container mx-auto flex items-center justify-between p-4 h-16 relative z-10">
     <!-- Logo -->
-    <div class="flex items-center">
-      <img src="/assets/Diastech.png" alt="Diastech Logo" class="h-12 w-12 rounded-full object-cover shadow-lg">
-    </div>
+
 
     <!-- Links de navegação (desktop) -->
     <ul class="hidden md:flex space-x-8">
@@ -18,7 +18,7 @@ const { className } = Astro.props;
 
     <!-- Botão para mobile -->
     <div class="md:hidden">
-      <button class="text-white menu-button bg-gradient-to-r from-black to-[#1e1cc4] p-2 rounded transition duration-200" aria-label="Toggle Menu" aria-expanded="false">
+      <button id="menu-button" class="text-white p-2 rounded transition duration-200" aria-label="Toggle Menu" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
@@ -27,57 +27,42 @@ const { className } = Astro.props;
   </nav>
 
   <!-- Menu mobile (inicialmente oculto) -->
-  <div id="mobile-menu" class="md:hiddenbg-gradient-to-r from-black to-[#1e1cc4] p-4 hidden rounded-lg shadow-lg">
-    <ul class="space-y-4">
-      <!-- <li><a href="/" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Inicio</a></li> -->
-      <li><a href="/about" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Sobre</a></li>
-      <li><a href="/services" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Serviços</a></li>
-      <li><a href="/contact" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Contato</a></li>
+  <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-80 p-4 rounded-lg shadow-lg absolute top-16 w-full z-20">
+    <ul class="space-y-4 text-center">
+      <li><a href="/about" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">About</a></li>
+      <li><a href="/services" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Services</a></li>
+      <li><a href="/contact" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Contact</a></li>
     </ul>
-    
   </div>
+
+  <!-- Banner logo abaixo da nav -->
+  <section class="relative flex justify-center items-center w-full h-[50vw] sm:h-[50vh] md:h-[40vh] lg:h-[30vw]">
+    <div class="relative w-full h-full overflow-hidden">
+      <img src="/assets/bg.png" alt="Coleção Outono" class="w-full h-full object-cover" />
+    </div>
+  </section>
 </header>
 
-
 <script>
-  // Estado do menu
-  let isOpen = false;
-
-  // Função para obter o SVG do botão
-  function getMenuButtonSVG(isOpen: boolean) {   
-    return isOpen ? `
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>` : `
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>`;
-  }
-
-  // Função para alternar o menu
-  function toggleMenu() {
-    isOpen = !isOpen;
-    console.log('Menu isOpen:', isOpen); // Adicionado para depuração
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuButton = document.querySelector('.menu-button');
-
-    if (mobileMenu) {
-      mobileMenu.classList.toggle('hidden', !isOpen);
-    }
-
-    if (menuButton) {
-      menuButton.innerHTML = getMenuButtonSVG(isOpen);
-      menuButton.setAttribute('aria-expanded', String(isOpen));
-    }
-  }
-
-  // Adicionar evento ao botão do menu
   document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.querySelector('.menu-button');
-    console.log('Menu button:', menuButton); // Adicionado para depuração
-    
-    if (menuButton) {
-      menuButton.addEventListener('click', toggleMenu);
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let isOpen = false;
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', () => {
+        isOpen = !isOpen;
+        mobileMenu.classList.toggle('hidden', !isOpen);
+        menuButton.innerHTML = isOpen ? `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        ` : `
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        `;
+      });
     }
   });
 </script>

@@ -1,4 +1,4 @@
-import { servicesData } from './servicesData.js';
+import { servicesData } from '../../src/data/produtos.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const servicesContainer = document.getElementById('servicesContainer');

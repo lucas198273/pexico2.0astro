@@ -10,27 +10,46 @@ import Aboutservice from '../components/Aboutservice.astro';
 import Aboutservice2 from '../components/Aboutservice2.astro';
 import Modal from '../components/Modal.astro';
 import Chat from '../components/Chat.astro';
+import { produtos } from '../data/produtos.js';
+import ProductSection from '../components/ProdutctSection.astro';
 ---
+
+
 <Layout>
   <Navbar className="custom-class" />
-  <Baner />
-  <section class="container mx-auto px-4 py-8 flex flex-col justify-center items-center">
-    <h1 class="text-3xl font-bold text-primary mb-8">Nossos Serviços</h1>
-    <!-- Container com rolagem horizontal -->
-    <div class="overflow-x-auto w-full scroll-smooth">
-      <!-- Container para os cards dinâmicos -->
-      <div id="servicesContainer" class="inline-flex space-x-4 lg:space-x-8 p-4"></div>
+  <div class="p-6">
+    <div class="flex justify-center items-center">
+      <nav class="w-full max-w-screen-lg mx-auto">
+        <ul class="flex justify-center items-center space-x-8 font-bold text-lg">
+          <li>
+            <a href="#hamburgueres" class="block border-2 border-black rounded-md px-4 py-2">Hambúrguer</a>
+          </li>
+          <li>
+            <a href="#bebidas" class="block border-2 border-black rounded-md px-2 py-2">Bebidas</a>
+          </li>
+          <li>
+            <a href="#porcoes" class="block border-2 border-black rounded-md px-4 py-2">Porções</a>
+          </li>
+          <li>
+            <a href="#artesanais" class="block border-2 border-black rounded-md px-4 py-2">Artesanais</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </section>
+  </div>
+  <main>
+    <ProductSection id="artesanais" title="Artesanais" products={produtos.artesanais} />
+    <ProductSection id="bebidas" title="Bebidas" products={produtos.bebidas} />
+    <ProductSection id="hamburgueres" title="Hambúrguer" products={produtos.hamburgueres} />
+    <ProductSection id="porcoes" title="Porções" products={produtos.porcoes} />
+  </main>
   
   <Aboutservice />
   <div class="w-full h-full bg-black flex flex-col md:flex-row justify-between items-center p-4 md:p-8">
-    <!-- Imagem -->
     <div class="w-full md:w-1/2 mb-6 md:mb-0">
       <img src="/assets/postdetalhes.png" alt="img-detalhes" class="w-full h-auto rounded-lg shadow-lg">
     </div>
 
-    <!-- Texto e Botão -->
     <div class="w-full md:w-1/2 md:pl-8">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 text-center md:text-left">
         Automação Inteligente para seu Negócio
@@ -51,18 +70,14 @@ import Chat from '../components/Chat.astro';
   <Form />
   <Modal />
   
-  <!-- Componente de Chat: ficará oculto inicialmente -->
   <div id="chatModal" class="hidden fixed bottom-4 right-4 z-50 w-full max-w-md">
     <Chat />
   </div>
   
-  <!-- Botão flutuante para ativar o chat -->
   <button id="chatToggleButton" class="fixed bottom-4 right-4 bg-blue-900 text-white px-4 py-2 rounded-full hover:bg-blue-700 z-60">
     Atendimento Online
   </button>
   
   <Footer />
-  <script type="module" src="/scripts/script.js"></script>
-  <!-- Script para gerenciamento do chat -->
-  <script type="module" src="/scripts/chat.js"></script>
-</Layout>
+
+</Layout> 
