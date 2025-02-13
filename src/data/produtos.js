@@ -5,6 +5,66 @@ export const produtos = {
       description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
       price: "R$ 32.90",
       image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }, {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
     },
     {
       name: "Frangolino",
