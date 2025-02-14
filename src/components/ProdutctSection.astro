@@ -25,7 +25,7 @@ const { id, title, products } = Astro.props as Props;
           <p class="text-gray-700 mt-2 text-sm">{product.description}</p>
           <div class="flex items-center justify-between mt-3">
             <p class="font-bold text-lg text-green-600">{product.price}</p>
-            <button class="bg-gray-900 text-white px-3 py-1 rounded add-to-cart-btn" data-name={product.name} data-price={product.price}>
+            <button class="bg-gray-900 text-white px-3 py-1 rounded add-to-cart-btn h-10 w-10" data-name={product.name} data-price={product.price}>
               <i class="fa fa-cart-plus"></i>
             </button>
           </div>

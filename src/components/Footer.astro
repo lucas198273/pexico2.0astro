@@ -1,21 +1,9 @@
 ---
 // src/components/Footer.astro
 ---
-
-<footer class="bg-gray-800 text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p class="text-lg mb-4">© 2025 Automação - Todos os direitos reservados</p>
-      <div class="flex justify-center space-x-6">
-        <a href="https://www.linkedin.com" target="_blank" class="hover:text-primary">
-          <i class="fab fa-linkedin-in"></i> LinkedIn
-        </a>
-        <a href="https://www.github.com" target="_blank" class="hover:text-primary">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-        <a href="mailto:contato@automacao.com" class="hover:text-primary">
-          <i class="fas fa-envelope"></i> Contato
-        </a>
-      </div>
-    </div>
+<footer class="w-full bg-red-500 py-3 fixed bottom-0 z-40 flex items-center justify-center">
+  <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
+    (<span id="cart-count">0</span>) Ver meu Carrinho
+    <i class="fa fa-cart-plus text-lg text-white"></i>
+  </button>
 </footer>
-  
