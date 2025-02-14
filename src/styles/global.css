@@ -3,15 +3,6 @@
 @tailwind utilities;
 
 /* Garantir que a rolagem lateral funcione corretamente */
-body, html {
-  overflow-x: hidden; /* Impede que a página inteira role horizontalmente */
-}
 
-.overflow-x-auto {
-  overflow-x: auto; /* Garante que a rolagem horizontal funcione */
-  -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos móveis */
-}
 
-.inline-flex {
-  display: inline-flex;
-}
+

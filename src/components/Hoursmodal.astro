@@ -1,55 +1,66 @@
 ---
 // src/components/HoursModal.astro
 ---
-<div id="modal-horarios" class="bg-black/70 fixed inset-0 z-50 flex justify-center items-center">
-    <div class="bg-white p-6 rounded-lg shadow-md w-[60%] max-w-[600px] transition-transform transform duration-300 scale-100 hover:scale-105 animated-background">
-      <h2 class="text-center font-bold text-3xl mb-4 text-gray-900 sm:text-2xl [@media(max-width:400px)]:text-xl">
-        Horários de Funcionamento
-      </h2>
-      <table class="w-full border-collapse text-sm text-gray-700">
-        <thead>
-          <tr>
-            <th class="border-b-2 border-gray-300 pb-2 text-left">Dia</th>
-            <th class="border-b-2 border-gray-300 pb-2 text-right">Horário</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Segunda-feira</td>
-            <td class="py-2 text-right">18:30 - 02:00</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Terça-feira</td>
-            <td class="py-2 text-right">Fechado</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Quarta-feira</td>
-            <td class="py-2 text-right">18:30 - 02:00</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Quinta-feira</td>
-            <td class="py-2 text-right">18:30 - 02:00</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Sexta-feira</td>
-            <td class="py-2 text-right">18:00 - 03:00</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Sábado</td>
-            <td class="py-2 text-right">18:00 - 03:00</td>
-          </tr>
-          <tr class="hover:bg-gray-100">
-            <td class="py-2">Domingo</td>
-            <td class="py-2 text-right">18:00 - 02:00</td>
-          </tr>
-        </tbody>
-      </table>
-      <button 
-        class="mt-6 w-full bg-blue-600 text-white font-semibold py-2 rounded-md shadow hover:bg-blue-700 transition duration-200 transform hover:scale-105"
-        id="close-modal-horarios"
-      >
-        Fechar
-      </button>
-    </div>
+<div id="modal-horarios" class="hidden bg-black/70 fixed inset-0 z-50  justify-center items-center">
+  <div class="bg-white p-6 rounded-lg shadow-md w-[60%] max-w-[600px] transition-transform transform duration-300 scale-100 hover:scale-105 animated-background">
+    <h2 class="text-center font-bold text-3xl mb-4 text-gray-900 sm:text-2xl [@media(max-width:400px)]:text-xl">
+      Horários de Funcionamento
+    </h2>
+    <table class="w-full border-collapse text-sm text-gray-700">
+      <thead>
+        <tr>
+          <th class="border-b-2 border-gray-300 pb-2 text-left">Dia</th>
+          <th class="border-b-2 border-gray-300 pb-2 text-right">Horário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Segunda-feira</td>
+          <td class="py-2 text-right">18:30 - 02:00</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Terça-feira</td>
+          <td class="py-2 text-right">Fechado</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Quarta-feira</td>
+          <td class="py-2 text-right">18:30 - 02:00</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Quinta-feira</td>
+          <td class="py-2 text-right">18:30 - 02:00</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Sexta-feira</td>
+          <td class="py-2 text-right">18:00 - 03:00</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Sábado</td>
+          <td class="py-2 text-right">18:00 - 03:00</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="py-2">Domingo</td>
+          <td class="py-2 text-right">18:00 - 02:00</td>
+        </tr>
+      </tbody>
+    </table>
+    <button 
+      class="mt-6 w-full bg-blue-600 text-white font-semibold py-2 rounded-md shadow hover:bg-blue-700 transition duration-200 transform hover:scale-105"
+      id="close-modal-horarios"
+    >
+      Fechar
+    </button>
   </div>
-  
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modal-horarios');
+    const closeButton = document.getElementById('close-modal-horarios');
+    if (closeButton && modal) {
+      closeButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+    }
+  });
+</script>
