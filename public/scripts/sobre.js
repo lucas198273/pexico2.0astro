@@ -16,6 +16,7 @@ openModalMobile.addEventListener("click", () => {
   menuButton.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
+  
   const mobileMenuItems = mobileMenu.querySelectorAll("a, button");
   mobileMenuItems.forEach(item => {
     item.addEventListener("click", () => {
