@@ -1,4 +1,28 @@
 export const produtos = {
+  eventos: [
+    {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    }
+  ],
+  maisVendidos: [
+    {
+      name: "Breaking bad",
+      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      price: "R$ 32.90",
+      image: "/assets/breking-bad.jpg"
+    },
+    {
+      name: "Frangolino",
+      description: "Pão de hambúrguer, carne de frango, queijo, alface e tomate, cebola roxa.",
+      price: "R$ 21.90",
+      image: "/assets/frangolino.jpg"
+    }
+  ],
+
+
   artesanais: [
     {
       name: "Breaking bad",

@@ -1,52 +1,43 @@
 ---
 // src/components/CartModal.astro
 ---
+---
+<!-- CartModal.astro -->
 <div id="cart-modal" class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
-    <div class="bg-white p-5 rounded-md w-[95%] max-w-[600px] max-h-[90%] overflow-y-auto">
-      <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
-      <div id="cart-items" class="flex flex-col gap-2 mb-4">
-        <!-- Produtos serão adicionados aqui dinamicamente -->
-      </div>
-      <div class="flex-row justify-between items-center">
-        <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
-        <div class="flex-col items-center justify-end">
-          <h3>Escolha o Tipo de Serviço:</h3>
-          <button id="mesa-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
-            Atendimento em Mesa
-          </button>
-          <button id="entrega-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
-            Entrega
-          </button>
-        </div>
-      </div>
-      <div id="mesa-form" class="hidden flex-col mt-4">
-        <label for="mesa-number" class="mb-2">Número da Mesa:</label>
-        <div id="mesa-buttons" class="grid grid-cols-5 gap-2">
-          <!-- Botões gerados dinamicamente -->
-        </div>
-        <input type="hidden" id="mesa-number" name="mesa-number">
-        <p id="selected-mesa" class="text-green-600 font-semibold mt-2 hidden">
-          Mesa selecionada: <span></span>
-        </p>
-      </div>
-      <p class="font-bold mt-4">Endereço de entrega</p>
-      <div id="entrega-form" class="hidden flex-col mt-4">
-        <input type="text" placeholder="Nome Completo" id="nome-completo" class="w-full border-2 p-1 rounded my-1">
-        <input type="text" placeholder="Rua, Número" id="rua-numero" class="w-full border-2 p-1 rounded my-1">
-        <input type="text" placeholder="Bairro" id="Bairro" class="w-full border-2 p-1 rounded my-1">
-        <input type="text" placeholder="Referencia" id="Referencia" class="w-full border-2 p-1 rounded my-1">
-        <p class="checkout-btn text-red-500 hidden" id="address-warn">
-          Por favor, preencha todos os campos de endereço corretamente.
-        </p>
-      </div>
-      <div class="flex items-center justify-between mt-5 w-full">
-        <button id="close-modal-btn" class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
-          Fechar
-        </button>
-        <button class="bg-green-500 text-white px-4 py-1 rounded" id="checkout-btn">
-          Realizar Pedido
+  <div class="bg-white p-5 rounded-md w-[95%] max-w-[600px] max-h-[90%] overflow-y-auto">
+    <h2 class="text-center font-bold text-2xl mb-2">Meu Carrinho</h2>
+    <div id="cart-items" class="flex flex-col gap-2 mb-4">
+      <!-- Itens do carrinho serão renderizados aqui -->
+    </div>
+    <div class="flex-row justify-between items-center">
+      <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+      <div class="flex-col items-center justify-end">
+        <button id="entrega-btn" class="bg-blue-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+          Entrega
         </button>
       </div>
     </div>
+    <p class="font-bold mt-4">Endereço de entrega</p>
+    <div id="entrega-form" class="hidden flex-col mt-4">
+      <input type="text" placeholder="Nome Completo" id="nome-completo" class="w-full border-2 p-1 rounded my-1" required>
+      <input type="text" placeholder="Rua, Número" id="rua-numero" class="w-full border-2 p-1 rounded my-1" required>
+      <input type="text" placeholder="Bairro" id="bairro" class="w-full border-2 p-1 rounded my-1" required>
+      <input type="text" placeholder="Referência" id="referencia" class="w-full border-2 p-1 rounded my-1">
+      <p class="checkout-btn text-red-500 hidden" id="address-warn">
+        Por favor, preencha todos os campos de endereço corretamente.
+      </p>
+    </div>
+    
+
+
+
+    <div class="flex items-center justify-between mt-5 w-full">
+      <button id="close-modal-btn" class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+        Fechar
+      </button>
+      <button class="bg-green-500 text-white px-4 py-1 rounded" id="checkout-btn">
+        Realizar Pedido
+      </button>
+    </div>
   </div>
-  
+</div>

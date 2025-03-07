@@ -1,53 +1,57 @@
 ---
-import '../styles/global.css';
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
 import Navbar from '../components/Navbar.astro';
 import { produtos } from '../data/produtos.js';
-import ProductSection from '../components/ProdutctSection.astro';
-import MapEmbed from '../components/MapEmbed.astro';
+import ProductSection from '../components/ProductSection.astro';
 import Footer from '../components/Footer.astro';
+import HoursModal from '../components/HoursModal.astro';
 import CartModal from '../components/CartModal.astro';
-import HoursModal from '../components/HoursModal.astro'
----
-<Layout>
-  <Navbar class="custom-class" />
 
-  <!-- Menu de categorias -->
-  <div class="p-6">
-    <div class="flex justify-center items-center">
-      <nav class="w-full max-w-screen-lg mx-auto">
-        <ul class="flex justify-center items-center space-x-8 font-bold text-lg">
-          <li>
-            <a href="#hamburgueres" class="block border-2 border-black rounded-md px-4 py-2">Hambúrguer</a>
-          </li>
-          <li>
-            <a href="#bebidas" class="block border-2 border-black rounded-md px-2 py-2">Bebidas</a>
-          </li>
-          <li>
-            <a href="#porcoes" class="block border-2 border-black rounded-md px-4 py-2">Porções</a>
-          </li>
-          <li>
-            <a href="#artesanais" class="block border-2 border-black rounded-md px-4 py-2">Artesanais</a>
-          </li>
-        </ul>
+---
+
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sushi</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body class="m-0 p-0">
+    <header class="header h-auto">
+      <Navbar class="fixed-navbar" />
+      <div class="container-logo">
+        <img src="/assets/logo.png" loading="lazy" alt="Logo" />
+      </div>
+      <img src="/assets/bg.png" alt="Banner" class="w-full mb-0 h-auto banner-img" />
+    </header>
+
+    <div class="container-nav p-4 mb-20">
+      <nav class="nav-sections w-full max-w-screen-lg mx-auto">
+        <div class="flex justify-center items-center">
+          <ul class="flex flex-wrap justify-center items-center space-x-4 sm:space-x-8 font-bold text-lg">
+            <li><a href="#hamburgueres" class="block border-2 border-black rounded-md px-4 py-2">Hambúrguer</a></li>
+            <li><a href="#bebidas" class="block border-2 border-black rounded-md px-2 py-2">Bebidas</a></li>
+            <li><a href="#porcoes" class="block border-2 border-black rounded-md px-4 py-2">Porções</a></li>
+          </ul>
+        </div>
       </nav>
     </div>
-  </div>
 
-  <!-- Seções de produtos -->  
-  <main class="container mx-auto p-6">
-    <ProductSection id="artesanais" title="Artesanais" products={produtos.artesanais} />
-    <ProductSection id="bebidas" title="Bebidas" products={produtos.bebidas} />
-    <ProductSection id="hamburgueres" title="Hambúrguer" products={produtos.hamburgueres} />
-    <ProductSection id="porcoes" title="Porções" products={produtos.porcoes} />
-    
-  </main>
+    <main id="menu" class="container mx-auto mt-4 p-6 bg-slate-100">
+      <ProductSection id="artesanais" title="Artesanais" products={produtos.artesanais} />
+      <ProductSection id="bebidas" title="Bebidas" products={produtos.bebidas} />
+      <ProductSection id="hamburgueres" title="Hambúrguer" products={produtos.hamburgueres} />
+      <ProductSection id="porcoes" title="Porções" products={produtos.porcoes} />
+    </main>
 
-  <MapEmbed />
+    <HoursModal />
+    <CartModal />    
+    <Footer />
 
-  <!-- Modais -->
-  <CartModal />
-  <HoursModal />
-
-  <Footer />
-</Layout>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="/scripts/script.js"></script>
+  </body>
+</html>

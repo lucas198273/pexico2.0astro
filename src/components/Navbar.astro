@@ -1,102 +1,43 @@
 ---
-// src/components/Navbar.astro
 const { className } = Astro.props;
 ---
-<header class={`relative w-full ${className} bg-black`}>
-  <!-- Barra de navegação -->
+<header class="relative w-full m-0 p-0  bg-black">
   <nav class="container mx-auto flex items-center justify-between p-4 h-16 relative z-10">
-    <!-- Botão de Horários (substituindo a logo) -->
-    <button 
-      id="open-modal-horarios" 
-      class="bg-gradient-to-r from-[#1c1a9b] to-black text-white transition duration-200 focus:outline-none hover:opacity-90 text-xl font-bold"
-    >
-      Horários
-    </button>
-    <!-- Links de navegação (desktop) -->
-    <ul class="hidden md:flex space-x-8">
-      <li><a href="/" class="text-white hover:text-blue-300 transition duration-200">Home</a></li>
-      <li><a href="/about" class="text-white hover:text-blue-300 transition duration-200">About</a></li>
-      <li><a href="/services" class="text-white hover:text-blue-300 transition duration-200">Services</a></li>
-      <li><a href="/contact" class="text-white hover:text-blue-300 transition duration-200">Contact</a></li>
-    </ul>
-    <!-- Botão para mobile -->
-    <div class="md:hidden">
-      <button id="menu-button" class="text-white p-2 rounded transition duration-200" aria-label="Toggle Menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+    <!-- Status do restaurante -->
+    <div id="date-span" class="bg-green-600 px-4 py-1 rounded-lg mt-16 absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
+      <span id="status-text" class="text-white font-medium">Aberto</span>
     </div>
+
+    <!-- Menu desktop -->
+    <ul class="hidden md:flex space-x-8 text-white">
+      <li>
+        <li><a href="/sobre">Sobre Nos </a></li>
+        <li><a href="/">Cardapio </a></li>
+        <button id="open-modal-horarios" class="bg-gradient-to-r from-[#1c1a9b] to-black text-white transition hover:opacity-90 text-xl font-bold" aria-label="Ver horários">
+          Horários
+        </button>
+      </li>
+    </ul>
+
+    <!-- Menu mobile -->
+    <button id="menu-button" class="md:hidden text-white p-2 transition" aria-label="Toggle Menu">
+      <!-- Ícone -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
   </nav>
 
-  <!-- Menu mobile (inicialmente oculto) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-80 p-4 rounded-lg shadow-lg absolute top-16 w-full z-20">
-    <ul class="space-y-4 text-center">
-      <li><a href="/about" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">About</a></li>
-      <li><a href="/services" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Services</a></li>
-      <li><a href="/contact" class="text-white block py-2 px-4 hover:bg-blue-700 rounded transition duration-200">Contact</a></li>
-      <li>
-        <button id="open-modal-horarios-mobile" class="text-white hover:text-blue-300 transition duration-200 focus:outline-none w-full text-left">
+  <!-- Menu mobile dropdown -->
+  <div id="mobile-menu" class="hidden bg-black bg-opacity-80 p-4 rounded-lg shadow-lg absolute top-16 w-full z-20">
+    <ul class="space-y-4 text-start text-white">
+      <li><a href="/sobre">Sobre Nos </a></li>
+      <li><a href="/">Cardapio </a></li>
+ 
+        <button id="open-modal-horarios-mobile" class="w-full text-left hover:text-blue-300 transition">
           Horários
         </button>
       </li>
     </ul>
   </div>
-
-  <!-- Banner logo abaixo da nav -->
-  <section class="relative flex justify-center items-center w-full h-[60vw] sm:h-[60vh] md:h-[40vh] lg:h-[40vw]">
-    <div class="relative w-full h-full overflow-hidden">
-      <img src="/assets/bg.png" alt="Coleção Outono" class="w-full h-full object-cover" />
-    </div>
-  </section>
 </header>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Script de toggle para o menu mobile
-    const menuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    let isOpen = false;
-    if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => {
-        isOpen = !isOpen;
-        mobileMenu.classList.toggle('hidden', !isOpen);
-        menuButton.innerHTML = isOpen ? `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        ` : `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        `;
-      });
-    }
-    
-    // Abre o modal de horários na versão desktop e mobile
-    const openModalButton = document.getElementById('open-modal-horarios');
-    const openModalMobileButton = document.getElementById('open-modal-horarios-mobile');
-    const modal = document.getElementById('modal-horarios');
-    if (openModalButton && modal) {
-      openModalButton.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-      });
-    }
-    if (openModalMobileButton && modal) {
-      openModalMobileButton.addEventListener('click', () => {
-        modal.classList.remove('hidden');
-        if (mobileMenu) {
-          mobileMenu.classList.add('hidden');
-        }
-        isOpen = false;
-        if (menuButton) {
-          menuButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          `;
-        }
-      });
-    }
-  });
-</script>

@@ -2,7 +2,248 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Garantir que a rolagem lateral funcione corretamente */
+/* ======================= */
+/* Estilos Base (Desktop)  */
+/* ======================= */
+.container-nav {
+ 
+  margin-top: 10rem;
+}
+.container-logo {
+  position: absolute; /* Permite posicionar a logo sobre o banner */
+  top: 50%; /* Move para o centro verticalmente */
+  left: 50%; /* Move para o centro horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para ficar exatamente no centro */
+  z-index: 99; /* Mantém a logo acima do banner */
+  width: 120px; /* Ajuste o tamanho conforme necessário */
+  height: 120px;
+  border-radius: 50%; /* Deixa a logo redonda */
+  overflow: hidden; /* Garante que a borda redonda se aplique corretamente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container-logo {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  width: 20vw;       /* Aumentado de 12vw para 15vw */
+  height: 20vw;      /* Aumentado de 12vw para 15vw */
+  max-width: 200px;  /* Aumentado de 120px para 180px */
+  max-height: 200px; /* Aumentado de 120px para 180px */
+  min-width: 40px;   /* Aumentado de 60px para 80px */
+  min-height: 40px;  /* Aumentado de 60px para 80px */
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.nav-sections {
+  position: relative;
+  z-index: 10;
+  margin-top: 3rem;
+   /* Valor padrão para desktop */
+}
+
+.nav-sections ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-sections a {
+  transition: background-color 0.3s;
+}
+
+.nav-sections a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.fixed-navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+}
+
+.add-to-cart-btn {
+  position: relative;
+  z-index: 5;
+}
+
+#date-span {
+  position: absolute;
+  margin-top: 10px;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+
+
+.banner-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.header {
+  
+  height: 85vh;
+  background-color: white;
+  background-position: center;
+  z-index: 0;
+}
+
+/* ======================= */
+/* Ajustes Responsivos     */
+/* ======================= */
+
+/* Para telas até 860px */
+@media (max-width: 860px) {
+  .nav-sections {
+    margin-top: 20px;
+  }
+ 
+  .container-nav {
+    margin-top: 5rem;
+  }
+  .container-logo {
+    margin-top: -20px;
+  }
+}
+
+/* Para telas até 768px (tablets e mobile maiores) */
+@media (max-width: 768px) {
+  .header {
+    width: 100vw;
+    height: 30vh; /* Altura reduzida para mobile */
+  }
+  .container-logo {
+    margin-top: -20px;
+  }
+  .nav-sections {
+    margin-top: 2rem;
+  }
+ 
+  .container-nav {
+    margin-top: 15rem;
+  }
+
+  
+  
+  #date-span {
+    margin-top: 10px;
+  }
+}
+
+/* Para telas até 640px (mobile) */
+@media (max-width: 640px) {
+  .header {
+    height: 25vh; /* Altura um pouco menor para mobile */
+  }
+  .nav-sections {
+    margin-top: 6rem;
+  
+  }
+  .container-nav {
+    margin-top: 10rem;
+  }
+  #date-span {
+    margin-top: 10px;
+  }
+  
+}
+
+/* Ajuste específico para telas com largura de 631px ou menos */
+/* Essa regra sobrescreve a anterior para garantir que os botões não sobreponham o banner */
+@media (max-width: 631px) {
+  .nav-sections {
+    margin-top: 6rem;
+  }
+  .container-nav {
+    margin-top: 10rem;
+  }
+  .container-logo {
+    margin-top: -40px;
+  }
+ 
+  
+}
+.product-card {
+  /* Aplica o recorte com os mesmos valores dos cantos arredondados */
+  clip-path: inset(0 round 0.5rem);
+}
+@media (max-width: 548px) { 
+
+  .nav-sections {
+    margin-top: 5rem;
+  }
+  .container-nav {
+    margin-top: 10rem;
+  }
+  .container-logo {
+     
+      
+    top: 30%;
+  }
+}
+@media (max-width: 480px) {
+  .nav-sections {
+    margin-top: 1rem;
+  }
+  .container-nav {
+    margin-top: 10rem;
+  }
+  .container-logo {
+     
+      
+    top: 30%;
+  }
+ 
+}
+
+  @media (max-width: 425px) {
+    .nav-sections ul li a {
+      font-size: 15px; /* Reduz o tamanho da fonte */
+      padding: 6px 10px; /* Reduz o padding interno */
+    }
+    .container-logo {
+     
+      
+      top: 30%;
+    } 
+    
+  }
+  @media (max-width: 410px) {
+    .container-logo {
+     
+      
+      top: 30%;
+    }
+  }
+    
+
+  
 
