@@ -30,15 +30,15 @@ export const produtos = {
       price: "R$ 32.90",
       image: "/assets/breking-bad.jpg"
     }, {
-      name: "Breaking bad",
-      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
-      price: "R$ 32.90",
-      image: "/assets/breking-bad.jpg"
+      name: "Frangolino",
+      description: "Pão de hambúrguer, carne de frango,queijo alface e tomate, cebola roxa.     ",
+      price: "R$ 21.90",
+      image: "/assets/frangolino.jpg"
     }, {
-      name: "Breaking bad",
-      description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
+      name: "Stranger Things",
+      description: " Pão de hambúrguer selado na manteiga, double blend bovino 150g, barbercue e queijo.     ",
       price: "R$ 32.90",
-      image: "/assets/breking-bad.jpg"
+      image: "/assets/strangerfings.jpg"
     }, {
       name: "Breaking bad",
       description: "Pão brioche selado na manteiga, mostarda e mel, empanado de frango artesanal 120g, bacon, tradicional queijo minas, cebola, molho aioli, tomate e alface.",
