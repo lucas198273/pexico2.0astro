@@ -30,30 +30,83 @@ const addressWarn = document.getElementById("address-warn");
   const spanItem = document.getElementById("date-span");
   const statusText = document.getElementById("status-text");
 
-  // Finaliza o pedido, valida os dados e reinicia o carrinho
+
+  const mesaBtn = document.getElementById("mesa-btn");
+  const mesaForm = document.getElementById("mesa-form");
+  const mesaButtonsContainer = document.getElementById("mesa-buttons");
+  const mesaNumberInput = document.getElementById("mesa-number");
+  const selectedMesaText = document.getElementById("selected-mesa");
+
+
+  function validarTipoDePedido() {
+    const mesaSelecionada = document.getElementById("mesa-number").value;
+    const enderecoPreenchido = [...document.querySelectorAll("#entrega-form input")]
+      .every(input => input.value.trim() !== "");
+  
+    if (!mesaSelecionada && !enderecoPreenchido) {
+      showToast("Por favor, selecione um tipo de pedido: Entrega ou Atendimento em Mesa.");
+      return false;
+    }
+    return true;
+  }
+  
+  mesaBtn.addEventListener("click", () => {
+    pedidoTipo = "mesa";
+    entregaForm.classList.add("hidden");
+    mesaForm.classList.remove("hidden");
+  });
+  
+  entregaBtn.addEventListener("click", () => {
+    pedidoTipo = "entrega";
+    entregaForm.classList.remove("hidden");
+    mesaForm.classList.add("hidden");
+  });
+
+  for (let i = 1; i <= 20; i++) {
+    const button = document.createElement("button");
+    button.classList.add("bg-gray-300", "p-2", "rounded", "hover:bg-gray-400");
+    button.textContent = i;
+    button.addEventListener("click", () => {
+      mesaNumberInput.value = i;
+      selectedMesaText.classList.remove("hidden");
+      selectedMesaText.querySelector("span").textContent = i;
+    });
+    mesaButtonsContainer.appendChild(button);
+  }
+
   checkoutBtn.addEventListener("click", () => {
     if (!checkRestauranteOpen()) {
       showToast("Estamos fechados, volte mais tarde!");
       return;
     }
+  
     if (cart.length === 0) {
-      showToast("Carrinho vazio ");
+      showToast("Carrinho vazio");
       return;
     }
+  
+    if (!validarTipoDePedido()) {
+      return; // A função já exibe a mensagem de erro se necessário
+    }
+  
     if (pedidoTipo === "entrega" && !validateAddress()) {
       showToast("Confirme o endereço de entrega");
       return;
     }
+  
     // Reseta a cor dos botões dos itens presentes no carrinho
     cart.forEach(item => {
       const button = document.querySelector(`[data-name="${item.name}"]`);
       if (button) updateButtonState(button, false);
     });
+  
     const msg = createWhatsAppMessage();
     const phone = "31999564747";
     window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+  
     resetCart();
   });
+  
 
   menuButton.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
@@ -82,9 +135,7 @@ const addressWarn = document.getElementById("address-warn");
     statusText.textContent = "Estamos fechados";
   }
 
-  entregaBtn.addEventListener("click", () => {
-    entregaForm.classList.remove("hidden");
-  });
+
 
   function updateButtonState(button, isInCart) {
     button.classList.toggle("bg-green-600", isInCart);
@@ -307,18 +358,43 @@ function showToast(message) {
     updateModal();
     updateCartTotal();
   }
-
   function createWhatsAppMessage() {
+    if (cart.length === 0) {
+        showToast("Carrinho vazio");
+        return "";
+    }
+
     let cartItemsText = "";
     let totalProducts = 0;
     cart.forEach(item => {
-      const itemTotal = item.price * item.quantity;
-      totalProducts += itemTotal;
-      let itemText = `\n${item.name} - Quantidade: ${item.quantity} - Subtotal: R$${itemTotal.toFixed(2)}`;
-      cartItemsText += `${itemText}\n`;
+        const itemTotal = item.price * item.quantity;
+        totalProducts += itemTotal;
+        cartItemsText += `\n${item.name} - Quantidade: ${item.quantity} - Subtotal: R$${itemTotal.toFixed(2)}`;
     });
-    const additionalInfo = `\nDados do cliente:\nNome: ${addressInputNome.value}\nEndereço: ${addressInputRuaNumero.value}, ${addressInputBairro.value}\nReferência: ${addressInputReferencia.value}`;
-    const message = `Olá, gostaria de fazer um pedido:\n\n${cartItemsText}\nTotal geral: R$${totalProducts.toFixed(2)}${additionalInfo}`;
-    return encodeURIComponent(message);
-  }
+
+    let pedidoInfo = `Olá, gostaria de fazer um pedido:\n${cartItemsText}\nTotal geral: R$${totalProducts.toFixed(2)}\n`;
+
+    if (pedidoTipo === "entrega") {
+        if (!validateAddress()) {
+            showToast("Confirme o endereço de entrega");
+            return "";
+        }
+        pedidoInfo += `\n📍 *Entrega para:* ${addressInputNome.value}\n🏠 *Endereço:* ${addressInputRuaNumero.value}, ${addressInputBairro.value}\n📝 *Referência:* ${addressInputReferencia.value || "Nenhuma"}\n`;
+    } else if (pedidoTipo === "mesa") {
+        const mesaInput = document.getElementById("mesa-number");
+        const mesaSelecionada = mesaInput ? mesaInput.value : "";
+        if (!mesaSelecionada) {
+            showToast("Selecione um número de mesa antes de continuar!");
+            return "";
+        }
+        pedidoInfo += `\n🍽️ *Atendimento na Mesa:* ${mesaSelecionada}\n`;
+    } else {
+        showToast("Escolha um tipo de pedido antes de finalizar!");
+        return "";
+    }
+
+    return encodeURIComponent(pedidoInfo);
+}
+
+  
 });

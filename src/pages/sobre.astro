@@ -1,4 +1,5 @@
 ---
+// Importação do CSS global e do componente Navbar
 import "../styles/global.css";
 import Navbar from '../components/NavbarSobre.astro';
 import { produtos } from '../data/produtos.js';
@@ -8,16 +9,20 @@ import { produtos } from '../data/produtos.js';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <title>Sobre Nós</title>
   </head>
   <body class="bg-gray-100">
     <!-- Exibe a Navbar importada -->
-    <Navbar />
+   
 
     <header class="w-full h-[420px] md:h-[500px] bg-zinc-900 bg-cover bg-center" style="background-image: url('/assets/bgart.png');">
       <div class="w-full h-full flex flex-col justify-center items-center">
         <img src="/assets/logo.png" loading="lazy" alt="Logo-Hamburgueria" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200" />
-      
+        <div class="bg-green-600 px-4 py-1 rounded-lg mt-24">
+          <span class="text-white font-medium"> Ter à Dom - 18:00 às 00:00</span>
+        </div>
       </div>
     </header>
 
@@ -25,12 +30,12 @@ import { produtos } from '../data/produtos.js';
       <div class="container mx-auto p-4">
         <ul class="flex justify-center space-x-8 font-bold text-lg">
           <li><a href="/" aria-label="Ir para o Cardápio">Voltar ao cardápio</a></li>
-          
         </ul>
       </div>
     </nav>
 
-    <div class="w-full my-2 flex justify-center space-x-8">
+    <!-- Seção de Redes Sociais -->
+    <div class="w-full mb-1 mt-1 flex justify-center space-x-8">
       <a href="https://www.instagram.com/thebrothersbetim" target="_blank" aria-label="Visite nosso Instagram" class="text-gray-700 hover:text-gray-900 transition-colors duration-200">
         <i class="fa-brands fa-instagram fa-3x"></i>
       </a>
@@ -42,13 +47,12 @@ import { produtos } from '../data/produtos.js';
     <main class="px-4 bg-black text-white">
       <h2 class="text-3xl font-bold text-center mt-9 mb-6">Conheça Nossos Eventos</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {produtos.eventos.map((event, index) => (
-          <div class="bg-white border rounded-lg shadow-lg overflow-hidden" >
+        {produtos.eventos.map((event) => (
+          <div class="bg-white border rounded-lg shadow-lg overflow-hidden">
             <img src={event.image} alt={event.name} class="w-full h-40 object-cover" loading="lazy" />
             <div class="p-4 text-black">
               <h3 class="text-xl font-semibold">{event.name}</h3>
               <p class="mt-2 text-gray-600">{event.description}</p>
-              <p class="mt-2 font-bold">{event.price}</p>
             </div>
           </div>
         ))}
@@ -57,8 +61,8 @@ import { produtos } from '../data/produtos.js';
       <h2 class="text-3xl font-bold text-center mt-9 mb-6">Mais Vendidos</h2>
       <div class="overflow-x-auto p-4">
         <div class="flex flex-nowrap justify-start gap-6">
-          {produtos.maisVendidos.map((product, index) => (
-            <div class="bg-white rounded-lg p-3 shadow-lg text-center flex-none w-72 sm:w-64 transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-xl" >
+          {produtos.maisVendidos.map((product) => (
+            <div class="bg-white rounded-lg p-3 shadow-lg text-center flex-none w-72 sm:w-64 transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-xl">
               <img src={product.image} alt={product.name} class="w-full h-auto rounded-lg mb-4" />
               <h3 class="mb-4 text-xl text-gray-800">{product.name}</h3>
               <p class="text-base text-gray-800">{product.description}</p>
@@ -67,8 +71,42 @@ import { produtos } from '../data/produtos.js';
           ))}
         </div>
       </div>
+
+      <!-- Seção de Agradecimento -->
+      <div class="flex flex-col md:flex-row w-full mb-9 bg-black bg-opacity-90 py-8">
+        <div class="md:w-2/4 w-full flex items-center flex-col">
+          <p class="text-white px-4 text-center md:text-left mt-6 p-4 text-sm md:text-lg lg:text-xl leading-relaxed">
+            Agradecimento Especial aos Nossos Clientes!<br /><br />
+            Aqui no The Brothers, cada um de vocês é parte fundamental da nossa história. Agradecemos por escolherem nosso espaço para celebrar cada momento. Continuem nos acompanhando nas redes sociais e venham nos visitar. Estamos sempre prontos para receber vocês de braços abertos e um sorriso no rosto.
+          </p>
+        </div>
+        <div class="md:w-2/5 w-full flex justify-center">
+          <img src="/assets/art.png" alt="Imagem de clientes se divertindo" class="object-contain w-full h-auto max-h-64 md:max-h-80 lg:max-h-96" />
+        </div>
+      </div>
+
+      <!-- Seção do Mapa -->
+      <div id="map" class="w-full h-[450px] overflow-hidden"></div>
+      <script>
+        window.onload = function() {
+          const mapDiv = document.getElementById('map');
+          if(mapDiv){
+            mapDiv.innerHTML = `
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.2728448345633!2d-44.202619626438356!3d-19.955024639085046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6c360cdf023e5%3A0x2da717cfad8f5512!2sTHE%20BROTHERS%20BURGUERS!5e0!3m2!1spt-BR!2sbr!4v1736516683274!5m2!1spt-BR!2sbr" 
+              class="w-full h-full border-0" 
+              allowfullscreen 
+              referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+
+          }
+        
+        };
+      </script>
     </main>
-   
-    <script type="module" src="/scripts/sobre.js"></script>
+
+    <footer class="bg-red-700 text-white text-center py-4 mt-8">
+      <p>&copy; 2025 The Brothers. Todos os direitos reservados.</p>
+      <p>Desenvolvido por: Lucas Dias</p>
+    </footer>
   </body>
 </html>
