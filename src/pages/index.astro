@@ -7,6 +7,7 @@ import Footer from '../components/Footer.astro';
 // import HoursModal from '../components/HoursModal.astro';
 import CartModal from '../components/CartModal.astro';
 
+
 ---
 
 <html lang="pt">
@@ -40,7 +41,7 @@ import CartModal from '../components/CartModal.astro';
       </nav>
     </div>
 
-    <main id="menu" class="container mx-auto mt-4 p-6 bg-slate-100">
+    <main id="menu" class="container mx-auto mt-4 p-6 bg-slate-100" >
       <ProductSection id="artesanais" title="Artesanais" products={produtos.artesanais} />
       <ProductSection id="bebidas" title="Bebidas" products={produtos.bebidas} />
       <ProductSection id="hamburgueres" title="Hambúrguer" products={produtos.hamburgueres} />
@@ -50,6 +51,7 @@ import CartModal from '../components/CartModal.astro';
     <!-- <HoursModal /> -->
     <CartModal />    
     <Footer />
+
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="/scripts/script.js"></script>

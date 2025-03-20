@@ -26,7 +26,7 @@ const addressWarn = document.getElementById("address-warn");
 
   let cart = [];
   let itemQuanty = 0;
-  let pedidoTipo = "entrega"; // Atendimento somente delivery
+  let pedidoTipo = ""; // Atendimento somente delivery
   const spanItem = document.getElementById("date-span");
   const statusText = document.getElementById("status-text");
 
@@ -37,24 +37,38 @@ const addressWarn = document.getElementById("address-warn");
   const mesaNumberInput = document.getElementById("mesa-number");
   const selectedMesaText = document.getElementById("selected-mesa");
 
-
   function validarTipoDePedido() {
-    const mesaSelecionada = document.getElementById("mesa-number").value;
-    const enderecoPreenchido = [...document.querySelectorAll("#entrega-form input")]
-      .every(input => input.value.trim() !== "");
-  
-    if (!mesaSelecionada && !enderecoPreenchido) {
-      showToast("Por favor, selecione um tipo de pedido: Entrega ou Atendimento em Mesa.");
-      return false;
+    if (pedidoTipo === "mesa") {
+        if (!validateMesa()) {
+            showToast("Selecione uma mesa");
+            return false;
+        }
+    } else if (pedidoTipo === "entrega") {
+        if (!validateAddress()) {
+            showToast("Confirme o endereço de entrega");
+            return false;
+        }
+    } else {
+        showToast("Por favor, selecione um tipo de pedido: Entrega ou Atendimento em Mesa.");
+        return false;
     }
     return true;
-  }
+}
+
   
   mesaBtn.addEventListener("click", () => {
     pedidoTipo = "mesa";
     entregaForm.classList.add("hidden");
     mesaForm.classList.remove("hidden");
   });
+  function validateMesa(){
+    const mesaSelecionada = document.getElementById("mesa-number").value;
+    if(mesaSelecionada === ""){;
+      return false;
+    }
+    return true;
+    
+  }
   
   entregaBtn.addEventListener("click", () => {
     pedidoTipo = "entrega";
@@ -91,6 +105,10 @@ const addressWarn = document.getElementById("address-warn");
   
     if (pedidoTipo === "entrega" && !validateAddress()) {
       showToast("Confirme o endereço de entrega");
+      return;
+    }
+    if(pedidoTipo === "mesa" && !validateMesa()) {
+      showToast("Selecione uma uma mesa");
       return;
     }
   
